@@ -5,7 +5,6 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Caminho ABSOLUTO do banco
 db_path = os.path.join(os.path.dirname(__file__), 'checkout_api.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 
@@ -72,5 +71,5 @@ def listar_vendas():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        print(f"✅ Banco criado: {db_path}")
+        print(f" Banco criado: {db_path}")
     app.run(debug=True, port=5001)
