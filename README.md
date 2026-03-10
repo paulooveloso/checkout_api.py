@@ -1,40 +1,99 @@
-Projeto RAD: API de Checkout Paulo iPhones
-Este repositório contém o desenvolvimento de uma API para processamento de vendas e cálculos financeiros da loja Paulo iPhones. O projeto foi construído utilizando Python e o framework Flask, seguindo os princípios de Desenvolvimento Rápido de Aplicações (RAD).
+**Projeto RAD: API de Checkout Paulo iPhones 🚀**
+Este repositório contém o desenvolvimento de uma API CRUD completa para processamento de vendas e cálculos financeiros da loja Paulo iPhones. O projeto foi construído utilizando Python + Flask + SQLAlchemy + SQLite, seguindo os princípios de Desenvolvimento Rápido de Aplicações (RAD).
 
+**✨ Funcionalidades Implementadas**
+Operações de Negócio Real:
 
+Operação	Cálculo	Exemplo Real
+venda_casada	a + b	iPhone + Capa (4500 + 200)
+troca_usado	a - b	Novo - Usado (4500 - 200)
+atacado	a * b	Estoque (2000 * 10)
+parcelamento	a / b	12x (3600 / 12)
+Endpoints CRUD Completos:
 
-Descrição do Sistema
-A aplicação funciona como um motor de cálculos para o checkout da loja. Ela recebe dados via requisição POST no formato JSON, contendo os valores 'a', 'b' e a 'operacao' desejada.
+text
+POST    /checkout          → Criar venda + calcular
+GET     /vendas            → Listar todas
+GET     /vendas/:id        → Ver uma
+PUT     /vendas/:id        → Atualizar
+DELETE  /vendas/:id        → Excluir
 
+**🚀 Instalação e Execução**
+1. Clonar e Ativar Ambiente Virtual:
 
-As operações foram mapeadas para situações reais de negócio:
+bash
+git clone https://github.com/pauloveloso/checkout-api.git
+cd checkout-api
+python3 -m venv .venv
+source .venv/bin/activate  # Mac/Linux
+# .venv\Scripts\activate    # Windows
+2. Instalar Dependências:
 
-Soma: Cálculo de venda casada (Aparelho + Acessório).
+bash
+pip install flask flask-sqlalchemy
+3. Rodar API:
 
-Subtração: Modalidade Trade-in (Valor do novo - Avaliação do usado).
+bash
+python checkout_api.py
+text
+✅ Banco criado: checkout_api.db
+* Running on http://127.0.0.1:5001
+🧪 Testes Completos (curl)
+**Terminal 1:** python checkout_api.py (deixe rodando)
 
-Multiplicação: Cálculo de custo para reposição de estoque (Preço unitário * Quantidade).
+**Terminal 2:**
 
-Divisão: Simulação de parcelamento para o cliente (Valor total / Parcelas).
+bash
+# 1. CRIAR venda casada
+curl -X POST http://127.0.0.1:5001/checkout -H "Content-Type: application/json" -d '{"a":4500,"b":200,"operacao":"venda_casada"}'
 
-Requisitos e Execução
-Para rodar o projeto localmente, é necessário ter o Python instalado e seguir os passos abaixo:
+# 2. Listar vendas
+curl http://127.0.0.1:5001/vendas
 
-Instalação da biblioteca necessária:
+# 3. Ver ID 1
+curl http://127.0.0.1:5001/vendas/1
 
-pip install flask 
+# 4. ATUALIZAR ID 1
+curl -X PUT http://127.0.0.1:5001/vendas/1 -H "Content-Type: application/json" -d '{"produto":"iPhone 16 Pro Max","val_tot":5200}'
 
+# 5. Ver atualizado
+curl http://127.0.0.1:5001/vendas/1
 
-Execução do servidor:
-python3 checkout_api.py
+# 6. EXCLUIR
+curl -X DELETE http://127.0.0.1:5001/vendas/1
+🗄️ Estrutura do Banco (SQLite)
+text
+Tabela: venda
+├── id (PK, auto)
+├── produto (string)
+├── val_tot (float)
+├── quant (int)
+└── data (datetime)
 
-curl -X POST http://127.0.0.1:5000/checkout -H "Content-Type: application/json" -d '{"a": 4500, "b": 200, "operacao": "subtracao"}'
+📈 Respostas ao Desafio Acadêmico
+**✅ O que foi feito profissional:**
 
-O serviço ficará disponível em http://127.0.0.1:5000/checkout.
+CRUD completo com banco SQLite persistente
 
-Respostas ao Desafio Acadêmico
-O que foi feito de forma profissional? 
-O código não se limita a uma calculadora simples; ele valida se os dados recebidos são numéricos e utiliza tratamentos de erro para evitar que o servidor pare de funcionar (como proteção contra divisão por zero). Além disso, a API utiliza códigos de status HTTP apropriados, como o 400 (Bad Request) para entradas inválidas, garantindo uma comunicação padronizada com o cliente.
+Validação robusta de entrada + tratamento de erros
 
+HTTP Status Codes corretos (201, 200, 400, 404, 500)
 
-Como o protótipo pode ser melhorado? Uma evolução natural seria a implementação de um banco de dados SQLite para persistir o histórico de vendas realizadas. Também seria viável a criação de uma interface visual utilizando Streamlit para facilitar o uso pelos vendedores da loja, além de adicionar camadas de autenticação para proteger os dados financeiros.
+Persistência com SQLAlchemy + histórico com timestamp
+
+Operações semânticas mapeadas para negócio real
+
+GitHub profissional com README técnico
+
+**🎯 Melhorias futuras:**
+
+Interface Streamlit para vendedores
+
+Autenticação JWT para segurança
+
+Deploy Heroku/Railway com PostgreSQL
+
+Testes unitários com pytest
+
+Docker para portabilidade
+
