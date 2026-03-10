@@ -25,8 +25,7 @@ bash
 git clone https://github.com/pauloveloso/checkout-api.git
 cd checkout-api
 python3 -m venv .venv
-source .venv/bin/activate  # Mac/Linux
-# .venv\Scripts\activate    # Windows
+
 2. Instalar Dependências:
 
 bash
@@ -38,6 +37,8 @@ python checkout_api.py
 text
 ✅ Banco criado: checkout_api.db
 * Running on http://127.0.0.1:5001
+
+  
 🧪 Testes Completos (curl)
 **Terminal 1:** python checkout_api.py (deixe rodando)
 
