@@ -96,7 +96,7 @@ Tabela: venda
 - **Docker** para portabilidade
 
 ## Alunos
-**Paulo Veloso** - 202502195495
-
+**Paulo Henrique Veloso da Silva** - 202502195495
+**Josef Lucas Sousa Campos** - 202502967969
 ***
 
