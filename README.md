@@ -44,7 +44,7 @@ python checkout_api.py
 ```
 Banco criado: checkout_api.db
 * Running on http://127.0.0.1:5001
-🧪 Testes Completos (curl)
+Testes Completos (curl)
 **Terminal 1:** python checkout_api.py (deixe rodando)
 
 **Terminal 2:**
