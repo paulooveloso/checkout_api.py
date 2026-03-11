@@ -1,49 +1,57 @@
-**Projeto RAD: API de Checkout Paulo iPhones 🚀**
-Este repositório contém o desenvolvimento de uma API CRUD completa para processamento de vendas e cálculos financeiros da loja Paulo iPhones. O projeto foi construído utilizando Python + Flask + SQLAlchemy + SQLite, seguindo os princípios de Desenvolvimento Rápido de Aplicações (RAD).
+# Projeto RAD: API de Checkout Paulo iPhones
 
-**✨ Funcionalidades Implementadas**
-Operações de Negócio Real:
+Este repositório contém o desenvolvimento de uma **API CRUD completa** para processamento de vendas e cálculos financeiros da loja **Paulo iPhones**. O projeto foi construído utilizando **Python + Flask + SQLAlchemy + SQLite**, seguindo os princípios de Desenvolvimento Rápido de Aplicações (RAD).
 
-Operação	Cálculo	Exemplo Real
-venda_casada	a + b	iPhone + Capa (4500 + 200)
-troca_usado	a - b	Novo - Usado (4500 - 200)
-atacado	a * b	Estoque (2000 * 10)
-parcelamento	a / b	12x (3600 / 12)
-Endpoints CRUD Completos:
+## Funcionalidades Implementadas
 
-text
+### Operações de Negócio Real
+| Operação | Cálculo | Exemplo Real |
+|----------|---------|-------------|
+| `venda_casada` | `a + b` | iPhone + Capa (4500 + 200) |
+| `troca_usado` | `a - b` | Novo - Usado (4500 - 200) |
+| `atacado` | `a * b` | Estoque (2000 * 10) |
+| `parcelamento` | `a / b` | 12x (3600 / 12) |
+
+### **Endpoints CRUD Completos**
+```
 POST    /checkout          → Criar venda + calcular
 GET     /vendas            → Listar todas
 GET     /vendas/:id        → Ver uma
 PUT     /vendas/:id        → Atualizar
 DELETE  /vendas/:id        → Excluir
+```
 
-**🚀 Instalação e Execução**
-1. Clonar e Ativar Ambiente Virtual:
+## Instalação e Execução
 
-bash
+### 1. Clonar e Ativar Ambiente Virtual
+```bash
 git clone https://github.com/pauloveloso/checkout-api.git
 cd checkout-api
 python3 -m venv .venv
 source .venv/bin/activate  # Mac/Linux
 # .venv\Scripts\activate    # Windows
-2. Instalar Dependências:
+```
 
-bash
+### 2. Instalar Dependências
+```bash
 pip install flask flask-sqlalchemy
-3. Rodar API:
+```
 
-bash
+### 3. Rodar API
+```bash
 python checkout_api.py
-text
-✅ Banco criado: checkout_api.db
+```
+```
+Banco criado: checkout_api.db
 * Running on http://127.0.0.1:5001
-🧪 Testes Completos (curl)
-**Terminal 1:** python checkout_api.py (deixe rodando)
+```
+
+## Testes Completos (curl)
+
+**Terminal 1:** `python checkout_api.py` *(deixe rodando)*
 
 **Terminal 2:**
-
-bash
+```bash
 # 1. CRIAR venda casada
 curl -X POST http://127.0.0.1:5001/checkout -H "Content-Type: application/json" -d '{"a":4500,"b":200,"operacao":"venda_casada"}'
 
@@ -61,39 +69,37 @@ curl http://127.0.0.1:5001/vendas/1
 
 # 6. EXCLUIR
 curl -X DELETE http://127.0.0.1:5001/vendas/1
-🗄️ Estrutura do Banco (SQLite)
-text
+```
+
+## Estrutura do Banco (SQLite)
+```
 Tabela: venda
 ├── id (PK, auto)
 ├── produto (string)
 ├── val_tot (float)
 ├── quant (int)
 └── data (datetime)
+```
 
-📈 Respostas ao Desafio Acadêmico
-**✅ O que foi feito profissional:**
+## **Respostas ao Desafio Acadêmico**
 
-CRUD completo com banco SQLite persistente
+### O que foi feito profissional
+- **CRUD completo** com banco SQLite persistente
+- **Validação robusta** de entrada + tratamento de erros
+- **HTTP Status Codes** corretos (201, 200, 400, 404, 500)
+- **Persistência** com SQLAlchemy + histórico com timestamp
+- **Operações semânticas** mapeadas para negócio real
+- **GitHub profissional** com README técnico
 
-Validação robusta de entrada + tratamento de erros
+### **Melhorias futuras**
+- Interface **Streamlit** para vendedores
+- **Autenticação JWT** para segurança
+- **Deploy Heroku/Railway** com PostgreSQL
+- **Testes unitários** com pytest
+- **Docker** para portabilidade
 
-HTTP Status Codes corretos (201, 200, 400, 404, 500)
+## Alunos
+**Paulo Veloso** - 202502195495
 
-Persistência com SQLAlchemy + histórico com timestamp
-
-Operações semânticas mapeadas para negócio real
-
-GitHub profissional com README técnico
-
-**🎯 Melhorias futuras:**
-
-Interface Streamlit para vendedores
-
-Autenticação JWT para segurança
-
-Deploy Heroku/Railway com PostgreSQL
-
-Testes unitários com pytest
-
-Docker para portabilidade
+***
 
