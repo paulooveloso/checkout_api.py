@@ -24,7 +24,8 @@ DELETE  /vendas/:id        → Excluir
 ## Instalação e Execução
 
 ### 1. Clonar e Ativar Ambiente Virtual
-```bash
+
+### bash 
 git clone https://github.com/pauloveloso/checkout-api.git
 cd checkout-api
 python3 -m venv .venv
@@ -33,12 +34,12 @@ source .venv/bin/activate  # Mac/Linux
 2. Instalar Dependências:
 
 ### 2. Instalar Dependências
-```bash
+### bash
 pip install flask flask-sqlalchemy
 ```
 
 ### 3. Rodar API
-```bash
+### bash
 python checkout_api.py
 ```
 ```
