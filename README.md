@@ -13,43 +13,46 @@ Este repositório contém o desenvolvimento de uma **API CRUD completa** para pr
 | `parcelamento` | `a / b` | 12x (3600 / 12) |
 
 ### **Endpoints CRUD Completos**
-```
+
 POST    /checkout          → Criar venda + calcular
 GET     /vendas            → Listar todas
 GET     /vendas/:id        → Ver uma
 PUT     /vendas/:id        → Atualizar
 DELETE  /vendas/:id        → Excluir
-```
+
 
 ## Instalação e Execução
 
 ### 1. Clonar e Ativar Ambiente Virtual
 
-### bash 
 git clone https://github.com/pauloveloso/checkout-api.git
+
 cd checkout-api
+
 python3 -m venv .venv
+
 source .venv/bin/activate  # Mac/Linux
-# .venv\Scripts\activate    # Windows
+
+.venv\Scripts\activate    # Windows
 2. Instalar Dependências:
 
 ### 2. Instalar Dependências
-### bash
+
 pip install flask flask-sqlalchemy
-```
+
 
 ### 3. Rodar API
-### bash
+
 python checkout_api.py
-```
-```
+
 Banco criado: checkout_api.db
 * Running on http://127.0.0.1:5001
 Testes Completos (curl)
-**Terminal 1:** python checkout_api.py (deixe rodando)
+**Terminal 1:**
+  python checkout_api.py 
 
 **Terminal 2:**
-```bash
+
 # 1. CRIAR venda casada
 curl -X POST http://127.0.0.1:5001/checkout -H "Content-Type: application/json" -d '{"a":4500,"b":200,"operacao":"venda_casada"}'
 
@@ -67,17 +70,17 @@ curl http://127.0.0.1:5001/vendas/1
 
 # 6. EXCLUIR
 curl -X DELETE http://127.0.0.1:5001/vendas/1
-```
+
 
 ## Estrutura do Banco (SQLite)
-```
+
 Tabela: venda
 ├── id (PK, auto)
 ├── produto (string)
 ├── val_tot (float)
 ├── quant (int)
 └── data (datetime)
-```
+
 
 ## **Respostas ao Desafio Acadêmico**
 
